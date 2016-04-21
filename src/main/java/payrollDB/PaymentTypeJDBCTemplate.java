@@ -20,9 +20,13 @@ public class PaymentTypeJDBCTemplate implements PaymentTypeDAO {
 	}
 	// TODO confirm this correctly creates a new record when PUT used.
 	public void create(String name, String rate) {
+		String SQL = "insert into paymenttype (paymentname, defaultrate) values (?, ?)";
 
+		jdbcTemplateObject.update( SQL, name, rate);
+		System.out.println("Created Record Name = " + name + ", Rate = " + rate);
+		return;	
 	}
-
+	
 	public PaymentType getPaymentType(Integer id) {
 		String SQL = "select * from PAYMENTTYPE where PAYMENTID = ?";
 		PaymentType paymenttype = jdbcTemplateObject.queryForObject(SQL, 
