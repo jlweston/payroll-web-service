@@ -19,7 +19,6 @@ public class EmployeeJDBCTemplate implements EmployeeDAO {
 		this.jdbcTemplateObject = new JdbcTemplate(dataSource);
 	}
 
-	// TODO confirm this correctly creates a new record when PUT used.
 	public void create(String forename, String surname, String taxcode) {
 		String SQL = "insert into Employees (forename, surname, taxcode) values (?, ?, ?)";
 
