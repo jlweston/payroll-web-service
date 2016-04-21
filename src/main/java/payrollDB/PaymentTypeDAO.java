@@ -21,7 +21,7 @@ public interface PaymentTypeDAO {
 	 */
 	public List<PaymentType> listPaymentTypes();
 	/** 
-	 * Method to delete a single PaymentType given an employee id.
+	 * Method to delete a single PaymentType given an id.
 	 */
 	public void delete(Integer id);
 }
