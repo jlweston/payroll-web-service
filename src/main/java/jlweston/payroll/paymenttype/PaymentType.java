@@ -1,4 +1,4 @@
-package payrollDB;
+package jlweston.payroll.paymenttype;
 
 public class PaymentType {
 	private Integer id;

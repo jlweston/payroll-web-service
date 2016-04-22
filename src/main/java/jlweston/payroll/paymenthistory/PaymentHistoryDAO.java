@@ -1,4 +1,4 @@
-package payrollDB;
+package jlweston.payroll.paymenthistory;
 
 import java.util.List;
 import javax.sql.DataSource;

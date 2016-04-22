@@ -1,4 +1,4 @@
-package payrollDB;
+package jlweston.payroll.employee;
 
 public class Employee {
 	private Integer id;

@@ -1,4 +1,4 @@
-package payrollDB;
+package jlweston.payroll.paymenttype;
 
 import java.util.List;
 import org.springframework.context.ApplicationContext;

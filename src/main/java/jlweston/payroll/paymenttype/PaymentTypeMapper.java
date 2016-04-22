@@ -1,4 +1,4 @@
-package payrollDB;
+package jlweston.payroll.paymenttype;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

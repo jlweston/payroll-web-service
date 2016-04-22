@@ -15,15 +15,15 @@
 	</bean>
 
 	<!-- Definition for studentJDBCTemplate bean -->
-	<bean id="EmployeeJDBCTemplate" class="payrollDB.EmployeeJDBCTemplate">
+	<bean id="EmployeeJDBCTemplate" class="jlweston.payroll.employee.EmployeeJDBCTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="PaymentTypeJDBCTemplate" class="jlweston.payroll.paymenttype.PaymentTypeJDBCTemplate">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<bean id="PaymentTypeJDBCTemplate" class="payrollDB.PaymentTypeJDBCTemplate">
-		<property name="dataSource" ref="dataSource" />
-	</bean>
-
-	<bean id="PaymentHistoryJDBCTemplate" class="payrollDB.PaymentHistoryJDBCTemplate">
+	<bean id="PaymentHistoryJDBCTemplate" class="jlweston.payroll.paymenthistory.PaymentHistoryJDBCTemplate">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	

@@ -1,4 +1,4 @@
-package payrollDB;
+package jlweston.payroll;
 
 import java.util.List;
 
@@ -6,6 +6,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import jlweston.payroll.employee.Employee;
+import jlweston.payroll.employee.EmployeeJDBCTemplate;
 
 @SpringBootApplication
 public class Application {

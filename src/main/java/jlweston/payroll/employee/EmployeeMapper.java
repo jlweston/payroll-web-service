@@ -1,4 +1,4 @@
-package payrollDB;
+package jlweston.payroll.employee;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

@@ -1,4 +1,4 @@
-package payrollDB;
+package jlweston.payroll.paymenthistory;
 
 public class PaymentHistory {
 	private Integer id;
