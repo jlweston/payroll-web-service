@@ -1,6 +1,7 @@
 package payrollDB;
 
 public class PaymentHistory {
+	private Integer id;
 	private Integer employeeid;
 	private String forename;
 	private String surname;
@@ -8,7 +9,12 @@ public class PaymentHistory {
 	private String paymentname;
 	private Integer paymentrate;
 
-	
+	public Integer getId(){
+		return id;
+	}
+	public void setId(Integer id){
+		this.id = id;
+	}
 	public Integer getEmployeeid() {
 		return employeeid;
 	}

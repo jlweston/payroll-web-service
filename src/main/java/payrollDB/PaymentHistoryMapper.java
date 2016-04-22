@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.RowMapper;
 public class PaymentHistoryMapper implements RowMapper<PaymentHistory> {
    public PaymentHistory mapRow(ResultSet rs, int rowNum) throws SQLException {
       PaymentHistory paymenthistory = new PaymentHistory();
+      paymenthistory.setId(rs.getInt("ID"));
       paymenthistory.setEmployeeid(rs.getInt("PAYMENTID"));
       paymenthistory.setForename(rs.getString("FORENAME"));
       paymenthistory.setSurname(rs.getString("SURNAME"));
