@@ -24,21 +24,27 @@ public class PaymentHistoryJDBCTemplate implements PaymentHistoryDAO {
 	}
 
 	public void delete(Integer id){
-		// TODO implement a method to delete a specified PaymentHistory object
+		String SQL = "delete from PAYMENTHISTORY where ID = ?";
+		jdbcTemplateObject.update(SQL, id);
 	}
 	
+	// Returns a list of all PaymentHistory items.
 	@Override
 	public List<PaymentHistory> listPaymentHistory() {
 		String SQL = "SELECT * FROM employees LEFT JOIN (paymenthistory, paymenttype) "
-				+ "ON (employees.employeeid = paymenthistory.employeeid AND paymenthistory.paymentid = paymenttype.paymentid);";
+				+ "ON (employees.employeeid = paymenthistory.employeeid AND paymenthistory.paymentid = paymenttype.paymentid)";
 		List<PaymentHistory> paymenthistory = jdbcTemplateObject.query(SQL, 
 				new PaymentHistoryMapper());
 		return paymenthistory;		
 	}
 	
+	// Returns a list of all PaymentHistory items for a particular employee
+	// given an {id}.
 	@Override
 	public List<PaymentHistory> listPaymentHistory(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		String SQL = "SELECT * FROM employees LEFT JOIN (paymenthistory, paymenttype) ON (employees.employeeid = paymenthistory.employeeid AND paymenthistory.paymentid = paymenttype.paymentid) WHERE employees.employeeid = ?;";
+		List<PaymentHistory> paymenthistory = jdbcTemplateObject.query(SQL, new Object[]{id},
+				new PaymentHistoryMapper());
+		return paymenthistory;		
 	}
 }
