@@ -41,7 +41,7 @@ public class PaymentTypeJDBCTemplate implements PaymentTypeDAO {
 	}
 
 	public void delete(Integer id){
-		String SQL = "delete from PAYMENTTYPE where ID = ?";
+		String SQL = "delete from PAYMENTTYPE where PAYMENTID = ?";
 		jdbcTemplateObject.update(SQL, id);
 		System.out.println("Deleted Record with PAYMENTID = " + id );
 		return;
