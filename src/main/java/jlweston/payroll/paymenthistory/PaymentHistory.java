@@ -8,6 +8,7 @@ public class PaymentHistory {
 	private Integer payperiod;
 	private String paymentname;
 	private Integer paymentrate;
+	private Integer paymentid;
 
 	public Integer getId(){
 		return id;
@@ -50,5 +51,12 @@ public class PaymentHistory {
 	}
 	public void setPaymentrate(Integer paymentrate) {
 		this.paymentrate = paymentrate;
+	}
+	public Integer getPaymentid() {
+		return paymentid;
+	}
+	public void setPaymentid(Integer paymentid) {
+		this.paymentid = paymentid;
+		
 	}
 }

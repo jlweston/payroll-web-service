@@ -14,7 +14,7 @@
 		<property name="password" value="root" />
 	</bean>
 
-	<!-- Definition for studentJDBCTemplate bean -->
+	<!-- Definition for EmployeeJDBCTemplate bean -->
 	<bean id="EmployeeJDBCTemplate" class="jlweston.payroll.employee.EmployeeJDBCTemplate">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
@@ -26,5 +26,7 @@
 	<bean id="PaymentHistoryJDBCTemplate" class="jlweston.payroll.paymenthistory.PaymentHistoryJDBCTemplate">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	
+	
 	
 </beans>

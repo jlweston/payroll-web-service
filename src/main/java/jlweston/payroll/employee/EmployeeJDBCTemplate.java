@@ -26,6 +26,14 @@ public class EmployeeJDBCTemplate implements EmployeeDAO {
 		System.out.println("Created Record Name = " + forename + " " + surname + ", Tax code = " + taxcode);
 		return;
 	}
+	
+	public void update(Integer id, String forename, String surname, String address1, String address2, String postcode, String taxcode) {
+		String SQL = "update Employees (forename, surname, address1, address2, postcode, taxcode) values (?, ?, ?, ?, ?, ?) where employeeid = " + id;
+
+		jdbcTemplateObject.update( SQL, forename, surname, address1, address2, postcode, taxcode);
+		System.out.println("Updated Record Name = " + forename + " " + surname + ", Tax code = " + taxcode);
+		return;
+	}
 
 	public Employee employeeFromID(Integer id) {
 		String SQL = "select * from EMPLOYEES where EMPLOYEEID = ?";
