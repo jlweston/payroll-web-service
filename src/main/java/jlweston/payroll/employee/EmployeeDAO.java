@@ -13,6 +13,8 @@ public interface EmployeeDAO {
     * Method to create an Employee.
     */
    public void create(String forename, String surname, String taxcode);
+   
+   public void update(Integer id, Employee employee);
    /** 
     * Method to retrieve a single Employee.
     */

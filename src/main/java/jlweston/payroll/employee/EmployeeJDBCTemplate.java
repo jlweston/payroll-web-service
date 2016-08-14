@@ -27,12 +27,23 @@ public class EmployeeJDBCTemplate implements EmployeeDAO {
 		return;
 	}
 	
-	public void update(Integer id, String forename, String surname, String address1, String address2, String postcode, String taxcode) {
-		String SQL = "update Employees (forename, surname, address1, address2, postcode, taxcode) values (?, ?, ?, ?, ?, ?) where employeeid = " + id;
-
-		jdbcTemplateObject.update( SQL, forename, surname, address1, address2, postcode, taxcode);
+	public void update(Integer id, Employee employee) {
+		Integer employeeid = employee.getId();
+		String forename = employee.getForename();
+		String surname = employee.getSurname();
+		String address1 = employee.getAddress1();
+		String address2 = employee.getAddress2();
+		String postcode = employee.getPostcode();
+		String taxcode = employee.getTaxcode();
+		String SQL = "UPDATE EMPLOYEES SET FORENAME='" + forename
+					+ "', SURNAME='" + surname
+					+ "', ADDRESS1='" + address1 
+					+ "', ADDRESS2='" + address2
+					+ "', POSTCODE='" + postcode
+					+ "', TAXCODE='" + taxcode
+					+ "' WHERE EMPLOYEEID='" + employeeid +"';";
+		jdbcTemplateObject.update( SQL );
 		System.out.println("Updated Record Name = " + forename + " " + surname + ", Tax code = " + taxcode);
-		return;
 	}
 
 	public Employee employeeFromID(Integer id) {

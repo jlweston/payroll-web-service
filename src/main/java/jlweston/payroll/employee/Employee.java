@@ -24,7 +24,7 @@ public class Employee {
 		return surname;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public Integer getId() {
@@ -35,7 +35,10 @@ public class Employee {
 	 * @return Address line 1
 	 */
 	 public String getAddress1() {
-		 return address1;
+		if (address1 == null) {
+			return "";
+		}
+		return address1;
 	 }
 
 	 /**
@@ -49,7 +52,10 @@ public class Employee {
 	  * @return Address line 1
 	  */
 	 public String getAddress2() {
-		 return address2;
+		if (address2 == null) {
+			return "";
+		}
+		return address2;
 	 }
 
 	 /**
@@ -63,7 +69,10 @@ public class Employee {
 	  * @return the postcode
 	  */
 	 public String getPostcode() {
-		 return postcode;
+		if (postcode == null) {
+			return "";
+		}
+		return postcode;
 	 }
 
 	 /**
@@ -77,6 +86,9 @@ public class Employee {
 	  * @return the taxcode
 	  */
 	 public String getTaxcode() {
+		if (taxcode == null) {
+			return "";
+		}
 		 return taxcode;
 	 }
 
