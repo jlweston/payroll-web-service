@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "http://jlweston.redirectme.net:8080")
 public class PaymentHistoryController {
 	ApplicationContext context = 
 			new ClassPathXmlApplicationContext("Beans.xml");
@@ -18,20 +19,18 @@ public class PaymentHistoryController {
 			(PaymentHistoryJDBCTemplate)context.getBean("PaymentHistoryJDBCTemplate");
 
 	//	Retrieves all PaymentHistory.
-	@CrossOrigin(origins = "http://localhost:8080")
 	@RequestMapping(value="/paymenthistory", method=RequestMethod.GET)
 	public List<PaymentHistory> listPaymentHistory() {
 		List<PaymentHistory> paymentthistory = paymenthistoryJDBCTemplate.listPaymentHistory();
 		return paymentthistory;
 	}
-	@CrossOrigin(origins = "http://localhost:8080")
+	
 	@RequestMapping(value="/paymenthistory/{id}", method=RequestMethod.DELETE)
 	public void delete(@PathVariable("id") Integer id) {
 		paymenthistoryJDBCTemplate.delete(id);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:8080")
-	@RequestMapping(value="/paymenthistory/employee/{id}", method=RequestMethod.GET)
+	@RequestMapping(value="/employee/{id}/paymenthistory", method=RequestMethod.GET)
 	public List<PaymentHistory> listPaymentHistory(@PathVariable("id") Integer id) {
 		List<PaymentHistory> paymentthistory = paymenthistoryJDBCTemplate.listPaymentHistory(id);
 		return paymentthistory;

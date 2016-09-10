@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "http://jlweston.redirectme.net:8080")
 public class PaymentTypeController {
 	ApplicationContext context = 
 			new ClassPathXmlApplicationContext("Beans.xml");
@@ -19,7 +20,6 @@ public class PaymentTypeController {
 			(PaymentTypeJDBCTemplate)context.getBean("PaymentTypeJDBCTemplate");
 
 	//	Retrieves all PaymentTypes.
-	@CrossOrigin(origins = "http://localhost:8080")
 	@RequestMapping(value="/paymenttype", method=RequestMethod.GET)
 	public List<PaymentType> listPaymentTypes() {
 		List<PaymentType> paymenttypes = paymenttypeJDBCTemplate.listPaymentTypes();
@@ -27,22 +27,19 @@ public class PaymentTypeController {
 	}
 
 	//	Creates a single PaymentType based on the parameters provided.
-	@CrossOrigin(origins = "http://localhost:8080")
-	@RequestMapping(value="/paymenttype", method=RequestMethod.PUT)
+	@RequestMapping(value="/paymenttype", method=RequestMethod.POST)
 	public void createPaymentType(@RequestParam() String name,
 			@RequestParam() String rate) {
 		paymenttypeJDBCTemplate.create(name, rate);
 	}
 
 	//	Deletes a single PaymentType based on the id provided.
-	@CrossOrigin(origins = "http://localhost:8080")
 	@RequestMapping(value="/paymenttype/{id}", method=RequestMethod.DELETE)
 	public void delete(@PathVariable("id") Integer id) {
 		paymenttypeJDBCTemplate.delete(id);
 	}
 
 	//	Retrieves a single PaymentType based on the id provided.
-	@CrossOrigin(origins = "http://localhost:8080")
 	@RequestMapping(value="/paymenttype/{id}", method=RequestMethod.GET)
 	public PaymentType paymenttypeFromID(@PathVariable("id") Integer id) {
 		PaymentType paymenttype = paymenttypeJDBCTemplate.getPaymentType(id);

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "http://jlweston.redirectme.net:8080")
 public class EmployeeController {
 	ApplicationContext context = 
 			new ClassPathXmlApplicationContext("Beans.xml");
@@ -23,27 +24,24 @@ public class EmployeeController {
 
 	//	Mapping for '/employee/' [GET].
 	//	Retrieves all Employees.
-	@CrossOrigin(origins = "http://localhost:8080")
 	@RequestMapping(value="/employee", method=RequestMethod.GET)
 	public List<Employee> listEmployees() {
 		List<Employee> employees = employeeJDBCTemplate.listEmployees();
 		return employees;
 	}
 
-	//	Mapping for '/employee/' [PUT].
+	//	Mapping for '/employee/' [POST].
 	//	Creates a single Employee based on the parameters provided.
-	@CrossOrigin(origins = "http://localhost:8080")
-	@RequestMapping(value="/employee", method=RequestMethod.PUT)
+	@RequestMapping(value="/employee", method=RequestMethod.POST)
 	public void createEmployee(@RequestParam() String forename,
 			@RequestParam() String surname,
 			@RequestParam() String taxcode) {
 		employeeJDBCTemplate.create(forename, surname, taxcode);
 	}
 	
-	//	Mapping for '/employee/{id}' [POST].
-	//	Creates a single Employee based on the parameters provided.
-	@CrossOrigin(origins = "http://localhost:8080")
-	@RequestMapping(value="/employee/{id}", method=RequestMethod.POST, consumes = "application/json", produces = "application/json")
+	//	Mapping for '/employee/{id}' [PUT].
+	//	Updates a single Employee based on the parameters provided.
+	@RequestMapping(value="/employee/{id}", method=RequestMethod.PUT, consumes = "application/json", produces = "application/json")
 	@ResponseBody
 	public String updateEmployee(@RequestParam(required = false) Integer id, @RequestBody Employee employee) {
 		System.out.println("POST request received for employee: " + id);
@@ -51,19 +49,8 @@ public class EmployeeController {
 		return new String("");
 	}
 	
-//	public void updateEmployee(@PathVariable("id") Integer id, 
-//			@RequestParam() String forename,
-//			@RequestParam() String surname,
-//			@RequestParam() String address1,
-//			@RequestParam() String address2,
-//			@RequestParam() String postcode,
-//			@RequestParam() String taxcode) {
-//		employeeJDBCTemplate.update(id, forename, surname, address1, address2, postcode, taxcode);
-//	}
-
 	//	Mapping for '/employee/' [DELETE]
 	//	Deletes a single Employee based on the id provided.
-	@CrossOrigin(origins = "http://localhost:8080")
 	@RequestMapping(value="/employee/{id}", method=RequestMethod.DELETE)
 	public void delete(@PathVariable("id") Integer id) {
 		employeeJDBCTemplate.delete(id);
@@ -71,7 +58,6 @@ public class EmployeeController {
 
 	//	Mapping for '/employee/{id}' [GET].
 	//	Retrieves a single Employee based on the id provided.
-	@CrossOrigin(origins = "http://localhost:8080")
 	@RequestMapping(value="/employee/{id}", method=RequestMethod.GET)
 	public Employee employeeFromID(@PathVariable("id") Integer id) {
 		Employee employee = employeeJDBCTemplate.employeeFromID(id);
